@@ -2,9 +2,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:gulfthisnews/constants/textConstants.dart';
+import 'package:gulfthisnews/provider/themeprovider.dart';
 import 'package:gulfthisnews/screens/guideScreen.dart';
 import 'package:gulfthisnews/screens/more.dart';
 import 'package:gulfthisnews/screens/slider.dart';
+import 'package:gulfthisnews/widgets/appbar.dart';
+import 'package:provider/provider.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -14,12 +18,35 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State {
-  int _currentIndex = 1;
-  final List _children = [Glance(), GuideScreen(), More()];
+  int _currentIndex = 0;
+  final List _children = [
+    Glance(), GuideScreen(),
+
+    //SizedBox()
+  ];
   void onTabTapped(int index) {
-    setState(() {
-      _currentIndex = index;
-    });
+    // setState(() {
+    //   _currentIndex = index;
+    // });
+
+    if (index != 2) {
+      setState(() {
+        _currentIndex = index;
+      });
+
+      print(_currentIndex);
+    } else {
+      Navigator.of(context).push(
+        MaterialPageRoute(builder: (context) => More()),
+      );
+    }
+  }
+
+  Scaffold star({BuildContext context}) {
+    return Scaffold(
+        //  backgroundColor: Colors.white,
+
+        );
   }
 
   @override
@@ -44,7 +71,7 @@ class _HomeState extends State {
                   ),
                 ),
               ),
-              label: 'Shorts',
+              label: bottomTab1,
             ),
             BottomNavigationBarItem(
               icon: new Transform.scale(
@@ -57,7 +84,7 @@ class _HomeState extends State {
                   ),
                 ),
               ),
-              label: 'Guides',
+              label: bottomTab2,
             ),
             BottomNavigationBarItem(
               icon: Transform.scale(
@@ -70,18 +97,27 @@ class _HomeState extends State {
                   ),
                 ),
               ),
-              label: 'More',
+              label: bottomTab3,
             )
           ],
+
           selectedLabelStyle: TextStyle(
-              fontSize: 10, fontFamily: 'inter', color: Color(0xFFFF939393)),
+            fontSize: 10, fontFamily: 'inter',
+            // color: Color(0xFFFF939393)
+          ),
           unselectedLabelStyle: TextStyle(
             fontSize: 10,
             fontFamily: 'inter',
             //color: Color(0xFFFF939393)
           ),
-          selectedItemColor: Colors.black,
-          unselectedItemColor: Colors.grey.shade900,
+          selectedItemColor:
+              Provider.of<DemoProvider>(context).themeMode == ThemeMode.dark
+                  ? Colors.white
+                  : null,
+          unselectedItemColor:
+              Provider.of<DemoProvider>(context).themeMode == ThemeMode.dark
+                  ? Colors.white
+                  : null,
           showUnselectedLabels: true,
         ),
       ),

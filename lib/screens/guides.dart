@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gulfthisnews/constants/constants.dart';
 import 'package:gulfthisnews/screens/detailScreen.dart';
 
 class Guides extends StatelessWidget {
@@ -25,7 +26,7 @@ class Guides extends StatelessWidget {
                     // ]
                     ),
                 child: Container(
-                  color: Colors.white,
+                  //   color: Colors.white,
                   height: MediaQuery.of(context).size.height * .40,
                   width: MediaQuery.of(context).size.width,
                   padding: EdgeInsets.only(
@@ -38,6 +39,7 @@ class Guides extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       ClipRRect(
+                        borderRadius: BorderRadius.circular(4),
                         child: Image.asset('assets/image1.jpg',
                             width: MediaQuery.of(context).size.width,
                             fit: BoxFit.fill),
@@ -50,7 +52,7 @@ class Guides extends StatelessWidget {
                       ),
                       Text("Value Added Tax Vat in Bahrain:",
                           style: TextStyle(
-                              color: Colors.black,
+                              // color: Colors.black,
                               fontSize: 17,
                               fontWeight: FontWeight.w500)),
                       Spacer(
@@ -58,7 +60,7 @@ class Guides extends StatelessWidget {
                       ),
                       Text("Everything You Need to Know",
                           style: TextStyle(
-                              color: Colors.black,
+                              // color: Colors.black,
                               fontSize: 17,
                               fontWeight: FontWeight.w500)),
                       Spacer(
@@ -71,7 +73,8 @@ class Guides extends StatelessWidget {
                         children: [
                           Text("Updated March 02, 2021     2 Min Read",
                               style: TextStyle(
-                                color: Colors.grey[400],
+                                // color: Colors.grey[400],
+                                color: greyButtonColor,
                                 fontSize: 12,
                               )),
 
@@ -97,9 +100,9 @@ class Guides extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => DetailScreen()),
                 );
               }),
-          Divider(
-            thickness: 1,
-          ),
+          // Divider(
+          //   thickness: 1,
+          // ),
           SizedBox(
             height: 2,
           ),
@@ -119,7 +122,7 @@ class Guides extends StatelessWidget {
                     // ]
                     ),
                 child: Container(
-                  color: Colors.white,
+                  // color: Colors.white,
                   height: MediaQuery.of(context).size.height * .40,
                   width: MediaQuery.of(context).size.width,
                   padding: EdgeInsets.only(
@@ -132,6 +135,7 @@ class Guides extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       ClipRRect(
+                        borderRadius: BorderRadius.circular(4),
                         child: Image.asset('assets/image2.jpg',
                             width: MediaQuery.of(context).size.width,
                             fit: BoxFit.fill),
@@ -144,7 +148,7 @@ class Guides extends StatelessWidget {
                       ),
                       Text("How to Calculate End of Service",
                           style: TextStyle(
-                              color: Colors.black,
+                              //color: Colors.black,
                               fontSize: 17,
                               fontWeight: FontWeight.w500)),
                       Spacer(
@@ -152,7 +156,7 @@ class Guides extends StatelessWidget {
                       ),
                       Text("Indemnity in Bahrain(2021)",
                           style: TextStyle(
-                              color: Colors.black,
+                              // color: Colors.black,
                               fontSize: 17,
                               fontWeight: FontWeight.w500)),
                       Spacer(
@@ -165,7 +169,7 @@ class Guides extends StatelessWidget {
                         children: [
                           Text("Updated March 02, 2021     2 Min Read",
                               style: TextStyle(
-                                color: Colors.grey[400],
+                                color: greyButtonColor,
                                 fontSize: 12,
                               )),
 

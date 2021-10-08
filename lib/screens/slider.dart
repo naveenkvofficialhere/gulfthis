@@ -3,9 +3,11 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:gulfthisnews/provider/themeprovider.dart';
 import 'package:gulfthisnews/screens/more.dart';
 import 'package:gulfthisnews/widgets/appbar.dart';
 import 'package:gulfthisnews/widgets/bottoNavigation.dart';
+import 'package:provider/provider.dart';
 
 import 'guideScreen.dart';
 
@@ -55,6 +57,7 @@ class _GlanceState extends State<Glance> with SingleTickerProviderStateMixin {
     return Scaffold(
       appBar: appbarMainPage(context),
       body: Container(
+        padding: EdgeInsets.only(top: 5, bottom: 5, left: 19, right: 16.5),
         child: Swiper(
           itemCount: images.length,
           itemBuilder: (BuildContext context, int index) {
@@ -70,8 +73,6 @@ class _GlanceState extends State<Glance> with SingleTickerProviderStateMixin {
                     child: Column(
                       children: [
                         Container(
-                          padding: EdgeInsets.only(
-                              top: 5, bottom: 5, left: 8, right: 6.5),
                           decoration: BoxDecoration(
 
                               //boxShadow: [
@@ -84,13 +85,13 @@ class _GlanceState extends State<Glance> with SingleTickerProviderStateMixin {
                               // ]
                               ),
                           child: Container(
-                            color: Colors.white,
+                            // color: Colors.white,
                             height: MediaQuery.of(context).size.height * .38,
                             width: MediaQuery.of(context).size.width,
                             padding: EdgeInsets.only(
                               top: 12,
-                              left: 12,
-                              right: 12,
+                              // left: 12,
+                              // right: 12,
                             ),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
@@ -152,11 +153,14 @@ class _GlanceState extends State<Glance> with SingleTickerProviderStateMixin {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(left: 16, right: 16),
+                          //padding: const EdgeInsets.only(left: 16, right: 16),
+                          padding: EdgeInsets.all(0),
                           child: Text(
                             myData[images[index]]['content'],
+                            textAlign: TextAlign.justify,
                             style: TextStyle(
                                 // color: Color(0xffff323C45),
+
                                 fontWeight: FontWeight.w400,
                                 fontSize: 13,
                                 height: 1.5,
@@ -168,9 +172,9 @@ class _GlanceState extends State<Glance> with SingleTickerProviderStateMixin {
                         ),
                         Row(
                           children: [
-                            SizedBox(
-                              width: 16,
-                            ),
+                            // SizedBox(
+                            //   width: 16,
+                            // ),
                             Text("Updated",
                                 style: TextStyle(
                                   color: Color(0xFFFF939393),
@@ -204,6 +208,11 @@ class _GlanceState extends State<Glance> with SingleTickerProviderStateMixin {
                                     scale: .80,
                                     child: SvgPicture.asset(
                                       'assets/love.svg',
+                                      color: Provider.of<DemoProvider>(context)
+                                                  .themeMode ==
+                                              ThemeMode.dark
+                                          ? Colors.white
+                                          : null,
                                     ),
                                   ),
                                   SizedBox(

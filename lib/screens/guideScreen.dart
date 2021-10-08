@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:gulfthisnews/constants/textConstants.dart';
+import 'package:gulfthisnews/provider/themeprovider.dart';
 import 'package:gulfthisnews/screens/guides.dart';
 import 'package:gulfthisnews/screens/more.dart';
 import 'package:gulfthisnews/screens/searchScreen.dart';
@@ -7,6 +9,7 @@ import 'package:gulfthisnews/screens/slider.dart';
 import 'package:gulfthisnews/widgets/appbar.dart';
 import 'package:gulfthisnews/widgets/tabIndicator.dart';
 import 'package:gulfthisnews/widgets/bottoNavigation.dart';
+import 'package:provider/provider.dart';
 
 class GuideScreen extends StatefulWidget {
   @override
@@ -45,7 +48,7 @@ class _GuideScreenState extends State<GuideScreen>
   Scaffold mainScreenGuides(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        // backgroundColor: Colors.white,
         title: Padding(
           padding: const EdgeInsets.only(left: 18),
           child: Transform.scale(
@@ -56,7 +59,14 @@ class _GuideScreenState extends State<GuideScreen>
             padding: const EdgeInsets.only(right: 18),
             child: GestureDetector(
                 child: Transform.scale(
-                    scale: 1, child: SvgPicture.asset('assets/lens.svg')),
+                    scale: 1,
+                    child: SvgPicture.asset(
+                      'assets/lens.svg',
+                      color: Provider.of<DemoProvider>(context).themeMode ==
+                              ThemeMode.dark
+                          ? Colors.white
+                          : null,
+                    )),
                 onTap: () {
                   Navigator.push(
                     context,
@@ -73,18 +83,23 @@ class _GuideScreenState extends State<GuideScreen>
                 thickness: 2,
                 height: 3,
               ),
-              new Container(
-                width: 900.0,
-                height: 55,
-                padding: EdgeInsets.only(bottom: 10, top: 10),
-                child: SingleChildScrollView(
+              SingleChildScrollView(
+                child: Container(
+                  height: 50,
                   child: new TabBar(
-                    labelColor: Colors.black,
-                    unselectedLabelColor: Colors.black,
+                    labelColor: Provider.of<DemoProvider>(context).themeMode ==
+                            ThemeMode.dark
+                        ? Colors.white
+                        : null,
+                    unselectedLabelColor:
+                        Provider.of<DemoProvider>(context).themeMode ==
+                                ThemeMode.dark
+                            ? Colors.white
+                            : null,
                     isScrollable: true,
                     labelStyle: TextStyle(
                         // color: Colors.red,
-                        fontSize: 14,
+                        fontSize: tabBarFontSize,
                         fontFamily: 'inter',
                         fontWeight: FontWeight.w600),
                     indicatorWeight: 4,
@@ -95,7 +110,7 @@ class _GuideScreenState extends State<GuideScreen>
                       indicatorColor: Colors.teal,
                     ),
 
-                    //  UnderlineTabIndicator(
+                    // UnderlineTabIndicator(
                     //     borderSide: BorderSide(
                     //       color: Colors.teal,
                     //       width: 4,
@@ -104,15 +119,15 @@ class _GuideScreenState extends State<GuideScreen>
                     tabs: [
                       new Container(
                         height: 20,
-                        child: new Tab(text: 'What\'s Up Bahrain '),
+                        child: new Tab(text: tab1Guide),
                       ),
                       new Container(
                         height: 20,
-                        child: new Tab(text: 'Living in Bahrain '),
+                        child: new Tab(text: tab2Guide),
                       ),
                       new Container(
                         height: 20,
-                        child: new Tab(text: 'Working in Bahrain '),
+                        child: new Tab(text: tab3Guide),
                       ),
                     ],
                   ),

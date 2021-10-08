@@ -109,10 +109,28 @@ class _SplashState extends State<Splash> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Transform.scale(
-                  scale: 1,
-                  child:
-                      SvgPicture.asset('assets/Made with ❤️ in Bahrain..svg'),
+                Row(
+                  children: [
+                    Spacer(),
+                    Text("Made with ",
+                        style: TextStyle(color: Color(0xFFFF24324A))),
+                    // Transform.scale(
+                    //   scale: .11,
+                    //   child: SvgPicture.asset(
+                    //     'assets/heart.svg',
+                    //     color: Colors.red,
+                    //   ),
+                    // ),
+                    Text(
+                      '❤️',
+                      style: TextStyle(color: Colors.red.shade900
+                          // Color(0xFFFFFF0000)
+                          ),
+                    ),
+                    Text(" in Bahrain",
+                        style: TextStyle(color: Color(0xFFFF24324A))),
+                    Spacer()
+                  ],
                 ),
                 SizedBox(
                   height: 7,

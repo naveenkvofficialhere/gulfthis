@@ -7,7 +7,7 @@ class SearchScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.white,
+        // backgroundColor: Colors.white,
         elevation: 1.5,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.start,
